@@ -22,4 +22,4 @@ This is an online application that helps users to record their memories.
 ## Authors
 [Kato Charles](https://github.com/kcharles52)
 
-Preview on <a href="https://kcharles52.github.io/myDiary/">Github pages</a>
+Preview on <a href="https://kcharles52.github.io/myDiary/UI/">Github pages</a>
