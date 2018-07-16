@@ -9,20 +9,24 @@
 
 </head>
 <body>
-    <div>
-            <header>
-                <h1>MyDiary</h1>
-            </header>
-            <nav></nav>
-            <div class="login-form form">
-                    <ul class="tab-group">
-                        <li class="tab active">
-                            <a href="#signup">Register</a>
-                        </li>
-                        <li class="tab">
-                            <a href="#login">Log In</a>
-                        </li>
-                    </ul>
+    <div id="home" class="pg-content">
+        <nav>
+            <p><a href="#">My Diary</a></p>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="addEntryhtml">Create Journel</a></li>
+                <li><a href="diaryentries.html">Diary entries</a></li>
+            </ul>
+        </nav>
+            <div class="form">
+                <div class="tab-group">
+                    <div class="tab active">
+                        <a href="#signup">Register</a>
+                    </div>
+                    <div class="tab">
+                        <a href="#login">Log In</a>
+                    </div>
+                </div>
 
                     <div class="tab-content">
                         <div id="signup" onclick="switchTab(signup)">
