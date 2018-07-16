@@ -1,18 +1,26 @@
-var login = document.getElementById('login');
-var register=document.getElementById('signup');
-function switchTab(a){
-    switch (a) {
-        case login:
-        login.style.display='block';
-        register.style.display='none';
+//Switch tabs on the home page
+function switchTab(evt, tabName){
+    var classes = document.getElementsByClassName('tab')
+    switch (tabName) {
+        case 'login':
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById('signup').style.display = "none";
+        classes[0].className = classes[0].className.replace(' active', '');
+        classes[1].className+=' active';
             break;
 
-        case signup:
-        register.style.display = 'block';
-        login.style.display = 'none';
+        case 'signup':
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById('login').style.display = "none";
+        classes[1].className = classes[0].className.replace(' active', '');
+        classes[0].className+=' active';
             break;
 
     }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    // document.getElementById(tabName).style.display = "block";
+    // evt.currentTarget.className += " active";
 }
 
 function openTab(evt, tabName) {
