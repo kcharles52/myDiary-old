@@ -18,6 +18,10 @@ class ApiTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertIn('User Kato has been registered', str(response.data))
 
+    def test_register_user_fail(self):
+        """Ensure user registration with incomplete data fails"""
+        response = self.test_client.post('/register', data=json.dumps({"name":"kato","email":"","password":"12345"}),content_type='application/json')
+        self.assertEqual(response.status_code,400)
 
 if __name__=='__main__':
     unittest.main()
