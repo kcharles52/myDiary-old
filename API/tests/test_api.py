@@ -13,6 +13,11 @@ class ApiTestCase(unittest.TestCase):
             "email":"kato@gmail.com",
             "password":"123456"
         }
+        self.user_login_data = {
+            "email":"kato@gmail.com",
+            "password":"123456"
+        }
+    #User registration tests
     def test_register_user(self):
         response = self.test_client.post('/register', data=json.dumps(self.user_data), content_type='application/json')
         self.assertEqual(response.status_code, 201)
@@ -22,6 +27,15 @@ class ApiTestCase(unittest.TestCase):
         """Ensure user registration with incomplete data fails"""
         response = self.test_client.post('/register', data=json.dumps({"name":"kato","email":"","password":"12345"}),content_type='application/json')
         self.assertEqual(response.status_code,400)
+
+    #User login tests
+    def test_user_login(self):
+        response = self.test_client.post('/login', data=json.dumps(self.user_login_data), content_type = 'application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Welcome Kato. You are logged in",str(response.data))
+
+
+
 
 if __name__=='__main__':
     unittest.main()
