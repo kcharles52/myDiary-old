@@ -1,22 +1,11 @@
 import json
-import pytest
-import unittest
+from tests import BaseTestCase
 
 from api.views import app
 
 
-class ApiTestCase(unittest.TestCase):
-    def setUp(self):
-        self.test_client =app.test_client()
-        self.user_data = {
-            "name":"Kato",
-            "email":"kato@gmail.com",
-            "password":"123456"
-        }
-        self.user_login_data = {
-            "email":"kato@gmail.com",
-            "password":"123456"
-        }
+class ApiTestCase(BaseTestCase):
+
     #User registration tests
     def test_register_user(self):
         response = self.test_client.post('/register', data=json.dumps(self.user_data), content_type='application/json')
@@ -43,6 +32,3 @@ class ApiTestCase(unittest.TestCase):
         response = self.test_client.post('/login', data=json.dumps({"email":" ", "password":"123456"}), content_type = 'application/json')
         self.assertEqual(response.status_code, 400)
         self.assertIn('email is required',str(response.data))
-
-if __name__=='__main__':
-    unittest.main()
