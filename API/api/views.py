@@ -30,3 +30,24 @@ def register_user():
         return jsonify({'message': 'A stronger password  is required'}), 400
 
     return jsonify({'message': 'User {} has been registered'.format(name)}), 201
+
+
+@app.route('/login', methods=['POST'])
+def login_user():
+    # getting user data
+    user_data = request.get_json()
+
+    #check if returned user data is empty
+    if not user_data:
+        return jsonify({'Missing': 'These fields are required'}), 400
+
+    email = str(user_data.get('email')).strip()
+    password = user_data.get('password')
+
+
+    if not email or email ==" ":
+        return jsonify({'Missing': 'email is required'}), 400
+
+    if not password or password ==" ":
+        return jsonify({'Missing': 'password  is required'}), 400
+    return jsonify({"message": "Welcome. You are logged in"}),200
