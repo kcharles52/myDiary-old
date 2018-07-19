@@ -63,5 +63,8 @@ class ApiTestCase(BaseTestCase):
         response = self.test_client.post('/api/v1/users/entries',data=json.dumps(self.entry_data), content_type='application/json')
         response = self.test_client.get('/api/v1/users/entries', data=json.dumps(self.entry_data), content_type='application/json')
         self.assertEqual(response.status_code,200)
-
-
+    
+    def test_get_single_entry(self):
+        """ Tests  whether a entry can be returned by id successfully """
+        response = self.test_client.get('/api/v1/users/entries/1', data=json.dumps(self.entry_data), content_type = 'application/json')
+        self.assertEqual(response.status_code, 200)
