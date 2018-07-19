@@ -14,6 +14,12 @@ class BaseTestCase(unittest.TestCase):
             "email":"kato@gmail.com",
             "password":"123456"
         }
+        self.entry_data={
+            "title":"wedding Dm",
+            "date":"1/2/2017",
+            "entryBody":"This some message for the entry in the diary",
+            "entry_id":"1"
+        }
 
 
     def tearDown(self):
