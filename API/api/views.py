@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, make_response
+from .models import Entry, entries
 
 import json
 import re
@@ -30,3 +31,73 @@ def register_user():
         return jsonify({'message': 'A stronger password  is required'}), 400
 
     return jsonify({'message': 'User {} has been registered'.format(name)}), 201
+
+#login route
+@app.route('/login', methods=['POST'])
+def login_user():
+    # getting user data
+    user_data = request.get_json()
+
+    #check if returned user data is empty
+    if not user_data:
+        return jsonify({'Missing': 'These fields are required'}), 400
+
+    email = str(user_data.get('email')).strip()
+    password = user_data.get('password')
+
+
+    if not email or email ==" ":
+        return jsonify({'Missing': 'email is required'}), 400
+
+    if not password or password ==" ":
+        return jsonify({'Missing': 'password  is required'}), 400
+    return jsonify({"message": "Welcome. You are logged in"}),200
+
+#create entry route
+@app.route("/api/v1/users/entries", methods=["POST"])
+def create_entry():
+    """ Endpoint to get the diary entry data entered by the user """
+    # get request data
+    entry_data = request.get_json()
+
+    #check if entry data is not empty
+    if not entry_data:
+        return jsonify({"message":"Enter data in all fields"}), 400
+    
+    title = entry_data.get('title')
+    date = entry_data.get('date')
+    entryBody = entry_data.get('entryBody')
+    entry_id = len(entries)+1
+
+    # validate request data
+    if not title or title == " " or title == type(int):
+        return jsonify({'message': 'title is required'}), 400
+    if not date or date == " ":
+        return jsonify({'message': 'date is required'}), 400
+    if not entryBody or entryBody == "":
+        return jsonify({
+            'status': 'Required',
+            'message': 'Please write someting'}), 400
+
+    new_entry = Entry(title, date, entryBody, entry_id)
+    entries.append(new_entry)
+
+    return jsonify({'message': 'You have successfully created your entry'}), 201
+
+#route for fetiching all diary entries
+@app.route("/api/v1/users/entries", methods=["GET"])
+def fetch_entries():
+    if len(entries) < 1:
+        return jsonify({"status":"Fail",
+            "Sorry":"You have no entries"
+        }),404
+    
+    if len(entries) >= 1:
+        return jsonify({
+            "message":"Successfully fetched entries",
+            "entriess":[
+                entry.__dict__ for entry in entries
+            ]
+        }),200
+    return jsonify({"Sorry":"Couldn\'t find any entries"}),400
+
