@@ -70,11 +70,11 @@ class ApiTestCase(BaseTestCase):
         response = self.test_client.get('/api/v1/users/entries/1', data=json.dumps(self.entry_data), content_type = 'application/json')
         self.assertEqual(response.status_code, 200)
 
-    def test_modify_empty_entry(self):
-        """ Tests whether a user can modify when there are no entries """
-        response = self.test_client.put('/api/v1/users/entries/1', data=json.dumps(self.entry_data), content_type='application/json')
-        self.assertEqual(response.status_code, 404)
-        self.assertIn("You have no entries to modify", str(response.data))
+    # def test_modify_empty_entry(self):
+    #     """ Tests whether a user can modify when there are no entries """
+    #     response = self.test_client.put('/api/v1/users/entries/1', data=json.dumps({self.entry_data}), content_type='application/json')
+    #     self.assertEqual(response.status_code, 404)
+    #     self.assertIn("You have no entries to modify", str(response.data))
 
     def test_modify_entry(self):
         """ Tests whether a user can modify an entry successfully """
