@@ -6,7 +6,9 @@ import re
 app = Flask(__name__)
 
 #register route
-@app.route('/register', methods=['POST'])
+
+
+@app.route('/api/v1/users/register', methods=['POST'])
 def register_user():
     #get user data from request
     user_data = request.get_json()
@@ -32,7 +34,7 @@ def register_user():
     return jsonify({'message': 'User {} has been registered'.format(name)}), 201
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/v1/users/login', methods=['POST'])
 def login_user():
     # getting user data
     user_data = request.get_json()
