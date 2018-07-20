@@ -6,7 +6,9 @@ import re
 app = Flask(__name__)
 
 #register route
-@app.route('/register', methods=['POST'])
+
+
+@app.route('/api/v1/users/register', methods=['POST'])
 def register_user():
     #get user data from request
     user_data = request.get_json()
