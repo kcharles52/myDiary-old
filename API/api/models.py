@@ -3,6 +3,7 @@ class Entry:
         self.title = title
         self.entryBody = entryBody
         self.date = date
+        self.entry_id = entry_id
 
 
     def __repr__(self):
