@@ -1,9 +1,12 @@
 from api.views import app
+from api.models import entries
 import pytest
 import unittest
 
 class BaseTestCase(unittest.TestCase):
+    
     def setUp(self):
+        entries.clear
         self.test_client =app.test_client()
         self.user_data = {
             "name":"Kato",
@@ -21,10 +24,8 @@ class BaseTestCase(unittest.TestCase):
             "entry_id":"1"
         }
 
-
     def tearDown(self):
-        pass
-
+        entries.clear
 
 if __name__ == "__main__":
     unittest.main()
