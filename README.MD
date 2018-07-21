@@ -31,7 +31,7 @@ HTTP Method|End point |Action
 POST | /api/v1/signup | Register a user
 POST | /api/v1/login | Login a user
 GET| /api/v1/entries   | Fetch all entries
-GET | /api/v1/entry/<entryId> | Fetch a single entry
+GET | /api/v1/entry/<entry_Id> | Fetch a single entry
 POST | /api/v1/entry | Create an entry
 PUT | /api/v1/entries/<entry_id>/ | Modify entry
 
