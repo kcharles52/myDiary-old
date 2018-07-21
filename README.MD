@@ -21,7 +21,7 @@ This is an online application that helps users to record their memories
 Preview on <a href="https://kcharles52.github.io/myDiary/UI/">Github pages</a>
 
 
-### BUilt with
+### Built with
 * HTML
 * CSS
 * javascript
