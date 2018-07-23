@@ -23,8 +23,7 @@ class BaseTestCase(unittest.TestCase):
 
 
     def tearDown(self):
-        pass
-
+        entries[:]=[]
 
 if __name__ == "__main__":
     unittest.main()
